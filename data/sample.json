@@ -1,0 +1,9 @@
+{
+  "event_id": "092103-016-sample-001",
+  "event_type": "KNOWLEDGE_PUBLISHED",
+  "aggregate_type": "knowledge_revision",
+  "aggregate_id": "dermatitis_triage_knowledge-001",
+  "occurred_at": "2026-09-20T16:00:00+08:00",
+  "version": 1,
+  "summary": "虫媒皮炎分流知识台联调样例"
+}
