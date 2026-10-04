@@ -1,0 +1,10 @@
+{
+  "case_id": "case-2026-09-28-vague",
+  "received_at": "2026-09-28T15:02:00+08:00",
+  "channel": "hotline_inbound",
+  "patient": {"age": null, "age_group": "来电人称“孩子”，具体年龄未知"},
+  "caller_note": "信息不足来电：只说孩子被虫子咬了“不太对劲”，拒绝/来不及描述部位与皮损形态。系统须给不出分级，先回问关键问题，不直接居家观察。",
+  "raw_transcript_excerpt": "孩子好像被虫子咬了，反正不太对劲……（未能说明部位、有无水疱、有无发热）",
+  "kb_version": "kb-2026-02",
+  "facts": ["is_child"]
+}

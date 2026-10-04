@@ -1,0 +1,81 @@
+{
+  "kb_version": "kb-2026-01",
+  "status": "superseded",
+  "effective_from": "2025-06-01",
+  "superseded_by": "kb-2026-02",
+  "change_note": "热线早期内部话术稿。本版保留两类已知缺陷，供回放与撤回追溯：(1) 不区分症状与人群，所有虫咬皮疹一律建议居家观察；(2) 居家步骤含酒精、碘伏涂擦及挑破水疱等可造成二次刺激的方法。引用来源未经权威核校。",
+  "modules": {
+    "sources": {
+      "module_version": "src-v1",
+      "items": [
+        {"id": "src-old-internal", "title": "热线坐席内部经验话术（旧稿）", "publisher": "热线班组自行整理", "authority_level": "internal_unverified", "ref_note": "未对照权威医学来源核校，已在 kb-2026-02 停用"}
+      ]
+    },
+    "populations": {
+      "module_version": "pop-v1",
+      "items": [
+        {"id": "pop-generic", "name": "不区分人群", "note": "旧稿对儿童、老人、孕妇等使用同一建议"}
+      ]
+    },
+    "exposure_routes": {
+      "module_version": "exp-v1",
+      "items": [
+        {"id": "exp-bite-generic", "name": "笼统归为“被虫子咬了”", "note": "不区分蚊、蠓、螨虫、毛虫、隐翅虫、蜱等"}
+      ]
+    },
+    "symptom_patterns": {
+      "module_version": "sym-v1",
+      "items": [
+        {"id": "sym-any-rash", "name": "任何红、痒、起包", "note": "不区分红斑、丘疹、水疱、糜烂"}
+      ]
+    },
+    "severity_levels": {
+      "module_version": "sev-v1",
+      "items": [
+        {"id": "sev-only", "name": "不分级", "note": "无严重程度概念"}
+      ]
+    },
+    "contraindications": {
+      "module_version": "ctra-v1",
+      "items": []
+    },
+    "home_steps": {
+      "module_version": "home-v1",
+      "items": [
+        {"id": "old-home-01", "text": "拿酒精棉片擦一擦消毒"},
+        {"id": "old-home-02", "text": "涂点碘伏（紫药水/红药水也行）"},
+        {"id": "old-home-03", "text": "水疱用针挑破把水挤出来"},
+        {"id": "old-home-04", "text": "在家观察就行，不用上医院"}
+      ]
+    },
+    "care_rules": {
+      "module_version": "rule-v1",
+      "items": [
+        {
+          "id": "old-rule-observe-all",
+          "name": "一律居家观察",
+          "level": "home_observe",
+          "when": {"all": ["fact:any_skin_lesion"]},
+          "home_step_ids": ["old-home-01", "old-home-02", "old-home-03", "old-home-04"],
+          "rationale": "旧稿默认虫咬都会自行消退，未考虑儿童、面部、密集或大面积水疱、糜烂渗出及全身过敏信号。",
+          "priority_signal": false
+        }
+      ]
+    },
+    "missing_questions": {
+      "module_version": "mq-v1",
+      "items": []
+    },
+    "seasonal_risks": {
+      "module_version": "sea-v1",
+      "items": []
+    },
+    "channels": {
+      "module_version": "chn-v1",
+      "items": [
+        {"id": "chn-web-old", "channel": "web", "name": "门户旧科普页"},
+        {"id": "chn-script-old", "channel": "script_library", "name": "坐席话术库旧条目"}
+      ]
+    }
+  }
+}

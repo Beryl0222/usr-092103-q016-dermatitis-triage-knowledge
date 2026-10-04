@@ -1,0 +1,10 @@
+{
+  "case_id": "case-2026-09-12-arm-redpatch",
+  "received_at": "2026-09-12T10:05:00+08:00",
+  "channel": "hotline_inbound",
+  "patient": {"age": 6, "age_group": "儿童（14岁以下）"},
+  "caller_note": "家长来电：孩子左前臂一小片红斑，有点痒，没有起疱，没有发热。",
+  "raw_transcript_excerpt": "就胳膊上硬币大一块红的，摸起来有点疙疙瘩瘩，孩子说痒，别的没什么。",
+  "kb_version": "kb-2026-01",
+  "facts": ["any_skin_lesion", "lesion_erythema", "lesion_papule", "small_localized", "site_limbs", "is_child"]
+}

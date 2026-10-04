@@ -1,0 +1,11 @@
+{
+  "case_id": "case-2026-09-25-arm-redpatch",
+  "received_at": "2026-09-25T09:40:00+08:00",
+  "channel": "hotline_inbound",
+  "patient": {"age": 6, "age_group": "儿童（14岁以下）"},
+  "caller_note": "家长来电：孩子左前臂一小片红斑伴瘙痒，无破溃、无全身症状（与 09-12 锚点场景相同，按现行版重新评估）。坐席已按采集问题逐项问清。",
+  "raw_transcript_excerpt": "就胳膊上硬币大一块红的，有点小疙瘩，痒，没起疱没发烧。问：破了流水吗？没有。脸/嘴肿、喘憋、喉咙紧？都没有。范围在扩大吗？没有。",
+  "kb_version": "kb-2026-02",
+  "facts": ["any_skin_lesion", "lesion_erythema", "lesion_papule", "small_localized", "site_limbs", "is_child"],
+  "negated_facts": ["erosion_oozing", "systemic_anaphylaxis", "infection_signs", "extensive_blisters", "site_face", "tick_attached", "worsening", "is_infant"]
+}

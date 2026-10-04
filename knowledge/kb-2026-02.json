@@ -1,0 +1,277 @@
+{
+  "kb_version": "kb-2026-02",
+  "status": "active",
+  "effective_from": "2026-09-21",
+  "supersedes": "kb-2026-01",
+  "change_summary": "修正旧稿两处错误：按人群/部位/皮损形态与全身信号分级分流，不再一律居家观察；删除酒精、碘伏、挑破水疱等刺激性处理，改为冲洗冷湿敷等规范居家步骤并列出禁忌。",
+  "modules": {
+    "sources": {
+      "module_version": "src-v2",
+      "review_note": "知识条目须可回溯到下列权威来源；热线话术与科普稿发布前由疾控/皮肤科专家核校。本系统只做分流，不替代医师诊断。",
+      "items": [
+        {"id": "src-cdc", "title": "中国疾病预防控制中心：病媒生物防制与虫咬防治健康科普", "publisher": "中国疾病预防控制中心", "authority_level": "official_health_agency", "ref_note": "媒介识别、季节与防制原则以其最新发布为准"},
+        {"id": "src-cma", "title": "中华医学会皮肤性病学分会：虫咬皮炎（丘疹性荨麻疹）诊疗与健康教育共识", "publisher": "中华医学会皮肤性病学分会", "authority_level": "specialist_guideline", "ref_note": "皮损分级、局部处理与用药原则的专业依据"},
+        {"id": "src-nhc", "title": "“健康中国”/科普中国：虫咬皮炎居家护理与就医提示", "publisher": "国家卫生健康委员会主管平台", "authority_level": "official_health_edu", "ref_note": "公众表达与就医提示口径"},
+        {"id": "src-label", "title": "炉甘石洗剂、口服第二代抗组胺药药品说明书（儿童剂型）", "publisher": "获批药品说明书", "authority_level": "package_insert", "ref_note": "适应证、年龄限制与糜烂渗出处禁用以说明书为准，用药咨询医师或药师"}
+      ]
+    },
+    "populations": {
+      "module_version": "pop-v2",
+      "items": [
+        {"id": "pop-general", "name": "普通成人", "note": "无基础疾病的成人"},
+        {"id": "pop-infant", "name": "婴幼儿（3岁以下）", "priority": true, "fact": "is_infant", "note": "皮肤薄、用药受限、病情变化快，任何明显皮疹从高分流"},
+        {"id": "pop-child", "name": "儿童（14岁以下）", "priority": true, "fact": "is_child", "note": "出现水疱即从高分流，面部/密集/大面积皮损当日就诊"},
+        {"id": "pop-elderly", "name": "老年人（65岁及以上）", "fact": "is_elderly", "note": "合并症多，建议更早就医评估"},
+        {"id": "pop-pregnant", "name": "孕妇/哺乳期", "fact": "is_pregnant", "note": "用药需经医师药师确认"},
+        {"id": "pop-immunocompromised", "name": "免疫功能低下者", "fact": "is_immunocompromised", "note": "感染风险高，水疱/糜烂从高"},
+        {"id": "pop-allergy", "name": "既往虫咬或药物严重过敏者", "fact": "has_severe_allergy_history", "note": "警惕全身过敏反应"}
+      ]
+    },
+    "exposure_routes": {
+      "module_version": "exp-v2",
+      "items": [
+        {"id": "exp-mosquito", "name": "蚊叮咬", "fact": "exp_mosquito", "note": "多为散在瘙痒丘疹"},
+        {"id": "exp-midge", "name": "蠓（“小咬”）叮咬", "fact": "exp_midge", "note": "成簇瘙痒丘疹，小腿等暴露部位"},
+        {"id": "exp-mite", "name": "螨虫接触", "fact": "exp_mite", "note": "与草席、凉席、谷物、宠物接触相关，成簇丘疹水疱"},
+        {"id": "exp-caterpillar", "name": "毛虫毒毛接触", "fact": "exp_caterpillar", "note": "桑毛虫/刺蛾，树下活动或晾晒衣物后出现，条状成片疹"},
+        {"id": "exp-paederus", "name": "隐翅虫体液接触", "fact": "paederus_contact", "note": "夜间灯光下虫体落于面颈，被拍打压碎后毒液刺激，可见条片状红斑、密集水疱甚至糜烂"},
+        {"id": "exp-tick", "name": "蜱叮咬（虫体附着）", "fact": "tick_attached", "note": "草丛丘陵活动后，虫体钻入皮肤不松口，须医用取出并观察传播病"},
+        {"id": "exp-flea", "name": "跳蚤/臭虫叮咬", "fact": "exp_flea", "note": "宠物、老旧居所，成串或成簇疹"},
+        {"id": "exp-unknown", "name": "未发现虫体", "fact": "exp_unknown", "note": "不作病原判断，按皮损形态与全身情况分流"}
+      ]
+    },
+    "symptom_patterns": {
+      "module_version": "sym-v2",
+      "items": [
+        {"id": "pat-local-erythema", "name": "局部小片红斑/丘疹伴瘙痒", "facts": ["any_skin_lesion", "lesion_erythema", "small_localized"]},
+        {"id": "pat-clustered-papules", "name": "成簇或线状丘疹", "facts": ["any_skin_lesion", "lesion_papule", "dense_cluster"]},
+        {"id": "pat-vesicles", "name": "散在或成簇水疱", "facts": ["any_skin_lesion", "lesion_vesicle"]},
+        {"id": "pat-dense-face-vesicles", "name": "面部密集水疱", "facts": ["any_skin_lesion", "lesion_vesicle", "site_face", "dense_cluster"]},
+        {"id": "pat-extensive-blisters", "name": "大面积水疱/大疱", "facts": ["any_skin_lesion", "lesion_vesicle", "extensive_blisters"]},
+        {"id": "pat-erosion-oozing", "name": "糜烂、渗液", "facts": ["any_skin_lesion", "erosion_oozing"]},
+        {"id": "pat-systemic-allergy", "name": "全身过敏信号：面唇舌肿胀、喘憋、喉头紧、全身风团、头晕心慌", "facts": ["systemic_anaphylaxis"]},
+        {"id": "pat-infection", "name": "继发感染信号：脓头/流脓、发热、红肿热痛扩散", "facts": ["infection_signs"]}
+      ]
+    },
+    "severity_levels": {
+      "module_version": "sev-v2",
+      "items": [
+        {"id": "lvl-emergency", "level": "emergency_now", "rank": 4, "public_label": "立即急诊/拨120", "definition": "存在全身过敏等危及生命信号"},
+        {"id": "lvl-urgent", "level": "urgent_same_day", "rank": 3, "public_label": "当日尽快就医（皮肤科/急诊）", "decision_escalation": true, "definition": "面部密集水疱、大面积水疱、糜烂渗出、感染征象、蜱附着，或儿童/婴幼儿较重皮损"},
+        {"id": "lvl-reassess", "level": "reassess_24_48", "rank": 2, "public_label": "对症护理并在24–48小时内复诊评估", "decision_escalation": true, "definition": "一般水疱、特殊暴露、儿童轻症或信息不足不能排除加重"},
+        {"id": "lvl-home", "level": "home_observe", "rank": 1, "public_label": "可居家护理并观察", "decision_escalation": false, "definition": "信息完整、仅小片红斑丘疹、无红旗信号"},
+        {"id": "lvl-indeterminate", "level": "indeterminate", "rank": 0, "public_label": "信息不足，先补充问题", "decision_escalation": false, "definition": "关键信息缺失时不作判断，按就高不就低处理"}
+      ]
+    },
+    "contraindications": {
+      "module_version": "ctra-v2",
+      "items": [
+        {"id": "ctr-alcohol", "text": "不要用酒精（白酒/酒精棉片）涂擦", "why": "刺激破损皮肤，加重疼痛、潮红与渗出"},
+        {"id": "ctr-iodine", "text": "不要涂碘伏、红药水、紫药水", "why": "刺激皮损、着色并掩盖皮疹，影响医生判断"},
+        {"id": "ctr-pop-blister", "text": "不要自行挑破水疱或撕皮", "why": "破坏屏障，显著增加感染风险"},
+        {"id": "ctr-scald-scratch", "text": "不要抓挠、用热水烫洗或反复搓洗", "why": "加重炎症和渗出，诱发感染"},
+        {"id": "ctr-folk", "text": "不要抹牙膏、酱油、风油精、清凉油等", "why": "成分不明，刺激皮肤并无治疗证据"},
+        {"id": "ctr-steroid-face-child", "text": "面部及儿童不要自行长期涂抹强效激素药膏", "why": "面部与儿童皮肤吸收强，可致皮肤萎缩等问题，需医生指导"},
+        {"id": "ctr-tick-pull", "text": "发现蜱附着时不要硬拔、拍打、火烧或涂药刺激", "why": "促使蜱分泌/反流，口器残留，增加感染风险，需医用取出"},
+        {"id": "ctr-calamine-broken", "text": "糜烂、渗液、破溃处不要涂炉甘石洗剂", "why": "药品说明书明确禁用于有渗出或破溃的皮肤"}
+      ]
+    },
+    "home_steps": {
+      "module_version": "home-v2",
+      "items": [
+        {"id": "home-wash", "text": "用清水或温和肥皂水轻轻冲洗局部，去除可能残留的毒毛/毒液，不要用力搓"},
+        {"id": "home-paederus-rinse", "text": "怀疑隐翅虫体液接触时，立即用大量清水冲洗，切勿在皮肤上拍打压碎虫体"},
+        {"id": "home-cold-compress", "text": "干净毛巾裹冰袋或冷水湿敷，每次约10分钟，减轻痒和红肿"},
+        {"id": "home-no-scratch", "text": "剪短指甲、避免抓挠；穿宽松棉质衣物，凉席床单可用热水清洗除螨"},
+        {"id": "home-calamine", "text": "完整皮肤可外用炉甘石洗剂止痒；破溃、渗液处不用"},
+        {"id": "home-antihistamine", "text": "瘙痒明显可按药品说明书选择口服第二代抗组胺药；儿童用儿童剂型并核对年龄，孕妇/哺乳/基础病者先咨询医师或药师"},
+        {"id": "home-record", "text": "在同样光线下拍照记录，观察范围是否扩大、是否起水疱或渗液"},
+        {"id": "home-tick-care", "text": "蜱仍附着时不要自行处理，尽快到医疗机构由专业人员取出"},
+        {"id": "home-cover-clean", "text": "破溃或渗液处用无菌或干净敷料轻轻覆盖吸渗，不要粘贴撕扯"}
+      ]
+    },
+    "care_rules": {
+      "module_version": "rule-v2",
+      "default_missing_level": "indeterminate",
+      "items": [
+        {
+          "id": "r-anaphylaxis",
+          "name": "全身过敏反应",
+          "level": "emergency_now",
+          "when": {"any": ["systemic_anaphylaxis"]},
+          "priority_signal": true,
+          "rationale": "面唇舌肿胀、喘憋、喉头紧、头晕等全身过敏信号可能迅速进展为过敏性休克，属于最高级别。",
+          "action": "立即拨打120或就近急诊；让患者平卧、保持气道通畅，不要仅作居家处理。",
+          "home_step_ids": [],
+          "contraindication_ids": ["ctr-alcohol", "ctr-iodine", "ctr-pop-blister", "ctr-folk"],
+          "advised_within": "立即（分钟级）",
+          "source_ids": ["src-cma", "src-nhc"]
+        },
+        {
+          "id": "r-face-dense-vesicles",
+          "name": "面部密集水疱",
+          "level": "urgent_same_day",
+          "when": {"all": ["lesion_vesicle", "site_face", "dense_cluster"]},
+          "priority_signal": true,
+          "rationale": "面部（尤其近眼、口唇）密集水疱提示刺激反应重且可能累及眼、口，常见于隐翅虫皮炎等，热线无法定性，需面诊评估。",
+          "action": "当日到皮肤科或急诊就诊；就医前清水轻柔冲洗、不要挑破水疱、不要涂酒精碘伏或自行涂强效激素药膏。",
+          "home_step_ids": ["home-wash", "home-cover-clean", "home-record"],
+          "contraindication_ids": ["ctr-pop-blister", "ctr-alcohol", "ctr-iodine", "ctr-scald-scratch", "ctr-folk", "ctr-steroid-face-child"],
+          "advised_within": "当日（数小时内）",
+          "source_ids": ["src-cma", "src-cdc", "src-nhc"]
+        },
+        {
+          "id": "r-extensive-blisters",
+          "name": "大面积水疱/大疱",
+          "level": "urgent_same_day",
+          "when": {"any": ["extensive_blisters"]},
+          "priority_signal": true,
+          "rationale": "大面积水疱意味着反应范围大、体液丢失与感染风险高，家庭处理无法覆盖。",
+          "action": "当日就诊；保持局部清洁、用干净敷料松覆，不要自行挑破。",
+          "home_step_ids": ["home-wash", "home-cover-clean", "home-record"],
+          "contraindication_ids": ["ctr-pop-blister", "ctr-alcohol", "ctr-iodine", "ctr-scald-scratch", "ctr-folk"],
+          "advised_within": "当日",
+          "source_ids": ["src-cma"]
+        },
+        {
+          "id": "r-erosion-oozing",
+          "name": "糜烂渗出",
+          "level": "urgent_same_day",
+          "when": {"any": ["erosion_oozing"]},
+          "priority_signal": true,
+          "rationale": "皮肤屏障已破溃，感染风险高，且炉甘石等常用外用药在渗液破溃处禁用，需医生处理。",
+          "action": "当日就诊；以干净敷料轻覆吸渗，不要涂酒精、碘伏、炉甘石或不明药膏。",
+          "home_step_ids": ["home-wash", "home-cover-clean"],
+          "contraindication_ids": ["ctr-pop-blister", "ctr-alcohol", "ctr-iodine", "ctr-calamine-broken", "ctr-scald-scratch", "ctr-folk"],
+          "advised_within": "当日",
+          "source_ids": ["src-cma", "src-label"]
+        },
+        {
+          "id": "r-infection",
+          "name": "疑似继发感染",
+          "level": "urgent_same_day",
+          "when": {"any": ["infection_signs"]},
+          "priority_signal": true,
+          "rationale": "流脓、发热、红肿热痛扩散提示细菌感染，可能需要抗菌治疗，居家观察会延误。",
+          "action": "当日就医评估；不要自行挤压或涂抹刺激性消毒剂。",
+          "home_step_ids": ["home-wash", "home-cover-clean", "home-record"],
+          "contraindication_ids": ["ctr-pop-blister", "ctr-alcohol", "ctr-iodine", "ctr-folk"],
+          "advised_within": "当日",
+          "source_ids": ["src-cma", "src-nhc"]
+        },
+        {
+          "id": "r-tick-attached",
+          "name": "蜱虫附着",
+          "level": "urgent_same_day",
+          "when": {"any": ["tick_attached"]},
+          "priority_signal": true,
+          "rationale": "自行硬拔或刺激蜱可致口器残留和反流，增加传播病风险，需专业取出并观察。",
+          "action": "当日到医疗机构取出；不要拔、捏、火烧或涂药刺激，记录暴露地点与时间。",
+          "home_step_ids": ["home-tick-care", "home-record"],
+          "contraindication_ids": ["ctr-tick-pull", "ctr-alcohol", "ctr-iodine"],
+          "advised_within": "当日（越早越好）",
+          "source_ids": ["src-cdc"]
+        },
+        {
+          "id": "r-child-vesicle",
+          "name": "儿童水疱",
+          "level": "reassess_24_48",
+          "when": {"all": ["is_child", "lesion_vesicle"]},
+          "priority_signal": true,
+          "rationale": "儿童皮肤屏障弱、用药受限，出现水疱即使范围不大也从高分流；若位于面部、密集或大面积，则由更高优先级规则升至当日就诊。",
+          "action": "24小时内到儿科或皮肤科评估；期间清水冲洗、冷湿敷，按儿童剂型说明书用药，不要用成人药或刺激性消毒剂。",
+          "home_step_ids": ["home-wash", "home-cold-compress", "home-no-scratch", "home-record"],
+          "contraindication_ids": ["ctr-pop-blister", "ctr-alcohol", "ctr-iodine", "ctr-steroid-face-child", "ctr-folk"],
+          "advised_within": "24小时内",
+          "source_ids": ["src-cma", "src-label"]
+        },
+        {
+          "id": "r-infant-any",
+          "name": "婴幼儿明显皮疹",
+          "level": "reassess_24_48",
+          "when": {"all": ["is_infant", "any_skin_lesion"]},
+          "priority_signal": true,
+          "rationale": "3岁以下婴幼儿病情变化快、用药限制多，皮疹应尽早由医生评估。",
+          "action": "24小时内就医评估；仅做清水冲洗与护理，不自行用药。",
+          "home_step_ids": ["home-wash", "home-cold-compress", "home-no-scratch"],
+          "contraindication_ids": ["ctr-pop-blister", "ctr-alcohol", "ctr-iodine", "ctr-folk"],
+          "advised_within": "24小时内",
+          "source_ids": ["src-cma", "src-label"]
+        },
+        {
+          "id": "r-paederus-exposure",
+          "name": "明确隐翅虫体液接触",
+          "level": "reassess_24_48",
+          "when": {"any": ["paederus_contact"]},
+          "priority_signal": false,
+          "rationale": "隐翅虫皮炎可在接触后数小时至一两天加重，起疱后需要医生评估；面眼部由更高规则升至当日就诊。",
+          "action": "立即大量清水冲洗，24–48小时内到皮肤科评估；不要在皮肤上拍打压碎虫体。",
+          "home_step_ids": ["home-paederus-rinse", "home-cold-compress", "home-record"],
+          "contraindication_ids": ["ctr-pop-blister", "ctr-alcohol", "ctr-iodine", "ctr-scald-scratch"],
+          "advised_within": "24–48小时内",
+          "source_ids": ["src-cdc", "src-cma"]
+        },
+        {
+          "id": "r-adult-local-vesicles",
+          "name": "一般水疱（非面部、非大面积）",
+          "level": "reassess_24_48",
+          "when": {"all": ["lesion_vesicle"]},
+          "priority_signal": false,
+          "rationale": "水疱性皮损病因多样，热线不能定性；在无红旗信号时先规范护理并安排评估，出现扩大、渗液、发热等立即升级。",
+          "action": "清水冲洗、冷湿敷、避免挑破；24–48小时内皮肤科评估，扩大或渗液立即就诊。",
+          "home_step_ids": ["home-wash", "home-cold-compress", "home-no-scratch", "home-record"],
+          "contraindication_ids": ["ctr-pop-blister", "ctr-alcohol", "ctr-iodine", "ctr-folk"],
+          "advised_within": "24–48小时内",
+          "source_ids": ["src-cma"]
+        },
+        {
+          "id": "r-mild-local",
+          "name": "小片红斑/丘疹、信息完整且无红旗信号",
+          "level": "home_observe",
+          "when": {"all": ["any_skin_lesion"]},
+          "priority_signal": false,
+          "rationale": "仅小片红斑或丘疹、无破溃与全身症状时，规范居家护理通常即可；该规则级别最低，命中任何更高规则即被覆盖。",
+          "action": "按居家步骤护理并观察；若出现水疱、糜烂渗液、发热、面部受累或范围扩大，立即按更高建议就诊。",
+          "home_step_ids": ["home-wash", "home-cold-compress", "home-no-scratch", "home-calamine", "home-antihistamine", "home-record"],
+          "contraindication_ids": ["ctr-alcohol", "ctr-iodine", "ctr-scald-scratch", "ctr-folk"],
+          "advised_within": "观察，加重随时就诊",
+          "source_ids": ["src-nhc", "src-cma", "src-label"]
+        }
+      ]
+    },
+    "intake_questions": {
+      "module_version": "mq-v2",
+      "items": [
+        {"id": "q-age", "text": "患者多大年龄？是否3岁以下或14岁以下儿童？", "establishes": ["is_infant", "is_child", "is_adult", "is_elderly"], "why": "儿童、婴幼儿与老人分流标准不同"},
+        {"id": "q-site", "text": "红斑/水疱在什么部位？是否在面部、眼周或口唇附近？", "establishes": ["site_face", "site_limbs", "site_trunk"], "why": "面部密集皮损需当日就诊"},
+        {"id": "q-lesion", "text": "是平的红斑、小疙瘩，还是已经起水疱？是散在还是密密麻麻一片？", "establishes": ["lesion_erythema", "lesion_papule", "lesion_vesicle", "dense_cluster"], "why": "皮损形态决定级别"},
+        {"id": "q-area", "text": "范围大概多大？比一个手掌大还是小？是一处还是多处？", "establishes": ["small_localized", "extensive_blisters"], "why": "大面积水疱需当日就诊"},
+        {"id": "q-integrity", "text": "水疱破了没有？有没有破皮、流水、渗液？", "establishes": ["erosion_oozing"], "why": "糜烂渗出易感染且部分药物禁用"},
+        {"id": "q-systemic", "text": "有没有脸或嘴唇肿、喘憋、喉咙发紧、头晕、全身起包或发热？", "establishes": ["systemic_anaphylaxis", "infection_signs"], "why": "全身过敏与发热需立即升级"},
+        {"id": "q-course", "text": "什么时候出现的？是在加重还是减轻？有没有脓、红肿扩散？", "establishes": ["worsening", "infection_signs"], "why": "进展与感染征象改变级别"},
+        {"id": "q-exposure", "text": "起疹前有没有被虫子咬、拍打过落在脸上的虫子、去草丛或接触草席宠物？", "establishes": ["paederus_contact", "tick_attached", "exp_unknown"], "why": "隐翅虫、蜱等暴露有专门处置"},
+        {"id": "q-history", "text": "有没有药物或虫咬过敏史、孕哺、糖尿病/免疫力低下等基础病？", "establishes": ["has_severe_allergy_history", "is_pregnant", "is_immunocompromised"], "why": "特殊人群用药与升级标准不同"}
+      ]
+    },
+    "seasonal_risks": {
+      "module_version": "sea-v2",
+      "items": [
+        {"id": "sea-mosquito", "name": "蚊、蠓叮咬高峰", "months": [5, 6, 7, 8, 9, 10], "regions": "全国，南方雨季尤甚", "linked_exposures": ["exp-mosquito", "exp-midge"], "note": "成簇小腿瘙痒丘疹多见"},
+        {"id": "sea-mite", "name": "螨虫皮炎", "months": [6, 7, 8, 9], "regions": "梅雨及夏季潮湿地区", "linked_exposures": ["exp-mite"], "note": "启用草席凉席、接触谷物或宠物后成批出现"},
+        {"id": "sea-paederus", "name": "隐翅虫皮炎", "months": [8, 9, 10], "regions": "南方及沿江地区，雨后闷热、夜间灯光", "linked_exposures": ["exp-paederus"], "note": "面颈条片状红斑、密集水疱，夜间开窗开灯时注意"},
+        {"id": "sea-caterpillar", "name": "毛虫皮炎", "months": [7, 8, 9], "regions": "林木、公园、行道树附近", "linked_exposures": ["exp-caterpillar"], "note": "树下活动或穿晾晒在树下的衣物后发疹"},
+        {"id": "sea-tick", "name": "蜱暴露", "months": [4, 5, 6, 7, 8, 9, 10], "regions": "丘陵、草地、林区", "linked_exposures": ["exp-tick"], "note": "春秋郊游、遛宠后检查耳后、腋下、腹股沟"},
+        {"id": "sea-flea", "name": "跳蚤/臭虫", "months": [6, 7, 8, 9], "regions": "老旧居所、饲养宠物环境", "linked_exposures": ["exp-flea"], "note": "成串皮疹，注意环境杀虫"}
+      ]
+    },
+    "channels": {
+      "module_version": "chn-v2",
+      "items": [
+        {"id": "ch-web", "channel": "web", "name": "市健康热线公众门户·虫咬皮炎专栏页", "owner": "热线内容组", "locator": "https://health.example.gov.cn/topics/insect-bite-dermatitis"},
+        {"id": "ch-script", "channel": "script_library", "name": "坐席话术库（分流卡片）", "owner": "热线培训组", "locator": "scriptlib://triage/insect-bite-dermatitis"},
+        {"id": "ch-partner-mp", "channel": "partner", "name": "区疾控与社区卫生服务中心公众号矩阵", "owner": "合作渠道运营", "locator": "partner://community-mp/*"},
+        {"id": "ch-partner-board", "channel": "partner", "name": "合作医疗机构候诊屏与院内公众号", "owner": "合作渠道运营", "locator": "partner://clinic-screen/*"}
+      ]
+    }
+  }
+}

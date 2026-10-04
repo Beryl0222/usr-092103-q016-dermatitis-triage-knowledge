@@ -1,56 +1,176 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "虫媒皮炎分流知识台领域事件",
+  "description": "公共信封 + 按 event_type 区分的 payload。新增事件只能在枚举中登记后使用。",
   "type": "object",
-  "required": [
-    "event_id",
-    "event_type",
-    "aggregate_type",
-    "aggregate_id",
-    "occurred_at",
-    "version",
-    "summary"
-  ],
+  "required": ["event_id", "event_type", "aggregate_type", "aggregate_id", "occurred_at", "version", "summary"],
   "properties": {
-    "event_id": {
-      "type": "string",
-      "minLength": 1
-    },
+    "event_id": {"type": "string", "minLength": 1},
     "event_type": {
       "type": "string",
       "enum": [
         "KNOWLEDGE_PUBLISHED",
+        "RISK_SIGNAL_REPORTED",
+        "CLUSTER_REVIEWED",
         "CONSULTATION_ASSESSED",
         "CASE_ESCALATED",
-        "CLUSTER_REVIEWED",
-        "CONTENT_WITHDRAWN"
+        "CONTENT_WITHDRAWN",
+        "CHANNEL_PUBLISHED",
+        "CHANNEL_TAKEDOWN_CONFIRMED"
       ]
     },
     "aggregate_type": {
       "type": "string",
-      "enum": [
-        "knowledge_revision",
-        "consultation_case",
-        "risk_signal",
-        "channel_release"
-      ]
+      "enum": ["knowledge_revision", "consultation_case", "risk_signal", "channel_release", "cluster_alert"]
     },
-    "aggregate_id": {
-      "type": "string",
-      "minLength": 1
+    "aggregate_id": {"type": "string", "minLength": 1},
+    "occurred_at": {"type": "string", "format": "date-time"},
+    "version": {"type": "integer", "minimum": 1},
+    "summary": {"type": "string", "minLength": 1},
+    "payload": {"type": "object"}
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "kb_ref": {
+      "type": "object",
+      "required": ["kb_version"],
+      "properties": {
+        "kb_version": {"type": "string", "pattern": "^kb-[0-9]{4}-[0-9]{2}$"},
+        "catalog": {"type": "string"},
+        "supersedes": {"type": "string"},
+        "status": {"type": "string", "enum": ["active", "superseded", "withdrawn"]},
+        "module_versions": {"type": "object", "additionalProperties": {"type": "string"}},
+        "withdrawn_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["item_id", "reason"],
+            "properties": {
+              "item_id": {"type": "string"},
+              "origin_kb": {"type": "string"},
+              "reason": {"type": "string"},
+              "superseded_by": {"type": "string"}
+            }
+          }
+        },
+        "change_summary": {"type": "string"}
+      }
     },
-    "occurred_at": {
-      "type": "string",
-      "format": "date-time"
+    "risk_signal": {
+      "type": "object",
+      "required": ["signal_id", "reported_by_facility", "case_count", "status"],
+      "description": "医疗机构上报信号：先原样保留来源，疾控未确认前不得对外预警。",
+      "properties": {
+        "signal_id": {"type": "string"},
+        "reported_by_facility": {"type": "object", "required": ["facility_id", "name"], "properties": {"facility_id": {"type": "string"}, "name": {"type": "string"}, "department": {"type": "string"}}},
+        "reporter": {"type": "string"},
+        "onset_window": {"type": "object", "properties": {"start": {"type": "string"}, "end": {"type": "string"}}},
+        "area": {"type": "string"},
+        "case_count": {"type": "integer", "minimum": 1},
+        "suspected_exposure": {"type": "string"},
+        "raw_note": {"type": "string"},
+        "status": {"type": "string", "enum": ["pending_review", "confirmed", "dismissed"]},
+        "source_doc_ref": {"type": "string"}
+      }
     },
-    "version": {
-      "type": "integer",
-      "minimum": 1
+    "cluster_review": {
+      "type": "object",
+      "required": ["decision", "signal_ids"],
+      "properties": {
+        "decision": {"type": "string", "enum": ["confirm_alert", "no_alert", "need_more_info"]},
+        "signal_ids": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "alert_id": {"type": "string"},
+        "reviewed_by": {"type": "string"},
+        "rationale": {"type": "string"},
+        "advisory_kb_version": {"type": "string"}
+      }
     },
-    "summary": {
-      "type": "string",
-      "minLength": 1
+    "assessment": {
+      "type": "object",
+      "required": ["case_id", "kb_version", "facts", "level", "uncertainty", "missing_question_ids"],
+      "properties": {
+        "case_id": {"type": "string"},
+        "kb_version": {"type": "string"},
+        "facts": {"type": "array", "items": {"type": "string"}},
+        "matched_rule_ids": {"type": "array", "items": {"type": "string"}},
+        "level": {"type": "string", "enum": ["home_observe", "reassess_24_48", "urgent_same_day", "emergency_now", "indeterminate"]},
+        "advice_item_ids": {"type": "array", "items": {"type": "string"}},
+        "contraindication_ids": {"type": "array", "items": {"type": "string"}},
+        "trigger_ids": {"type": "array", "items": {"type": "string"}},
+        "missing_question_ids": {"type": "array", "items": {"type": "string"}},
+        "uncertainty": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "escalation": {
+      "type": "object",
+      "required": ["case_id", "target", "reason_rule_id"],
+      "properties": {
+        "case_id": {"type": "string"},
+        "target": {"type": "string"},
+        "reason_rule_id": {"type": "string"},
+        "priority_signals": {"type": "array", "items": {"type": "string"}},
+        "advised_within": {"type": "string"}
+      }
+    },
+    "withdrawal": {
+      "type": "object",
+      "required": ["items"],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["item_id", "reason"],
+            "properties": {
+              "item_id": {"type": "string"},
+              "origin_kb": {"type": "string"},
+              "reason": {"type": "string"},
+              "superseded_by": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "channel_publish": {
+      "type": "object",
+      "required": ["channel", "revision_id", "kb_version", "content_refs"],
+      "properties": {
+        "channel": {"type": "string", "enum": ["web", "script_library", "partner"]},
+        "channel_name": {"type": "string"},
+        "revision_id": {"type": "string"},
+        "kb_version": {"type": "string"},
+        "content_refs": {"type": "array", "items": {"type": "string"}},
+        "locator": {"type": "string"}
+      }
+    },
+    "takedown": {
+      "type": "object",
+      "required": ["revision_id", "withdrawn_event_id", "confirmed_by"],
+      "properties": {
+        "revision_id": {"type": "string"},
+        "withdrawn_event_id": {"type": "string"},
+        "confirmed_by": {"type": "string"},
+        "replacement_revision_id": {"type": "string"},
+        "note": {"type": "string"}
+      }
     }
   },
-  "additionalProperties": true
+  "allOf": [
+    {"if": {"properties": {"event_type": {"const": "KNOWLEDGE_PUBLISHED"}}, "required": ["event_type"]},
+     "then": {"required": ["payload"], "properties": {"payload": {"$ref": "#/$defs/kb_ref"}}}},
+    {"if": {"properties": {"event_type": {"const": "RISK_SIGNAL_REPORTED"}}, "required": ["event_type"]},
+     "then": {"required": ["payload"], "properties": {"payload": {"$ref": "#/$defs/risk_signal"}}}},
+    {"if": {"properties": {"event_type": {"const": "CLUSTER_REVIEWED"}}, "required": ["event_type"]},
+     "then": {"required": ["payload"], "properties": {"payload": {"$ref": "#/$defs/cluster_review"}}}},
+    {"if": {"properties": {"event_type": {"const": "CONSULTATION_ASSESSED"}}, "required": ["event_type"]},
+     "then": {"required": ["payload"], "properties": {"payload": {"$ref": "#/$defs/assessment"}}}},
+    {"if": {"properties": {"event_type": {"const": "CASE_ESCALATED"}}, "required": ["event_type"]},
+     "then": {"required": ["payload"], "properties": {"payload": {"$ref": "#/$defs/escalation"}}}},
+    {"if": {"properties": {"event_type": {"const": "CONTENT_WITHDRAWN"}}, "required": ["event_type"]},
+     "then": {"required": ["payload"], "properties": {"payload": {"$ref": "#/$defs/withdrawal"}}}},
+    {"if": {"properties": {"event_type": {"const": "CHANNEL_PUBLISHED"}}, "required": ["event_type"]},
+     "then": {"required": ["payload"], "properties": {"payload": {"$ref": "#/$defs/channel_publish"}}}},
+    {"if": {"properties": {"event_type": {"const": "CHANNEL_TAKEDOWN_CONFIRMED"}}, "required": ["event_type"]},
+     "then": {"required": ["payload"], "properties": {"payload": {"$ref": "#/$defs/takedown"}}}}
+  ]
 }

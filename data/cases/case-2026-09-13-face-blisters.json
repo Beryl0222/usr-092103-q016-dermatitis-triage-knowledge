@@ -1,0 +1,10 @@
+{
+  "case_id": "case-2026-09-13-face-blisters",
+  "received_at": "2026-09-13T22:14:00+08:00",
+  "channel": "hotline_inbound",
+  "patient": {"age": 34, "age_group": "成人"},
+  "caller_note": "成人来电：夜间感觉有虫落在脸上随手拍过，次晨面颊出现条片状红斑，已起密密麻麻的水疱，有灼痛。",
+  "raw_transcript_excerpt": "脸上一大片密密麻麻的水疱，火辣辣的，昨晚开灯睡觉时拍了个虫子……要去医院吗？",
+  "kb_version": "kb-2026-01",
+  "facts": ["any_skin_lesion", "lesion_vesicle", "site_face", "dense_cluster", "paederus_contact", "is_adult"]
+}

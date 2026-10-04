@@ -1,0 +1,10 @@
+{
+  "case_id": "case-2026-09-26-face-blisters",
+  "received_at": "2026-09-26T21:48:00+08:00",
+  "channel": "hotline_inbound",
+  "patient": {"age": 29, "age_group": "成人"},
+  "caller_note": "成人来电：夜间灯下拍打落在右颊的虫体后，次晨面部条片状红斑上出现密集水疱，灼痛明显，无呼吸困难。",
+  "raw_transcript_excerpt": "右脸上密密麻麻一串水疱，火辣辣地疼，昨晚拍死过一个像蚂蚁的虫子，眼睛旁边也有两颗。",
+  "kb_version": "kb-2026-02",
+  "facts": ["any_skin_lesion", "lesion_vesicle", "site_face", "dense_cluster", "paederus_contact", "is_adult"]
+}

@@ -1,0 +1,294 @@
+[
+  {
+    "event_id": "evt-2025-0601-kb01-publish",
+    "event_type": "KNOWLEDGE_PUBLISHED",
+    "aggregate_type": "knowledge_revision",
+    "aggregate_id": "dermatitis_triage_knowledge",
+    "occurred_at": "2025-06-01T09:00:00+08:00",
+    "version": 1,
+    "summary": "发布虫媒皮炎分流知识 kb-2026-01（热线早期内部话术稿）",
+    "payload": {
+      "kb_version": "kb-2026-01",
+      "catalog": "虫媒皮炎分流知识库",
+      "status": "active",
+      "module_versions": {"sources": "src-v1", "populations": "pop-v1", "home_steps": "home-v1", "care_rules": "rule-v1"}
+    }
+  },
+  {
+    "event_id": "evt-2025-0602-web-old-online",
+    "event_type": "CHANNEL_PUBLISHED",
+    "aggregate_type": "channel_release",
+    "aggregate_id": "rel-web-old-1",
+    "occurred_at": "2025-06-02T10:00:00+08:00",
+    "version": 1,
+    "summary": "门户旧科普页上线，引用 kb-2026-01 居家步骤与一律观察话术",
+    "payload": {
+      "channel": "web",
+      "channel_name": "门户旧科普页",
+      "revision_id": "rel-web-old-1",
+      "kb_version": "kb-2026-01",
+      "content_refs": ["old-home-01", "old-home-02", "old-home-03", "old-home-04", "old-rule-observe-all"],
+      "locator": "https://health.example.gov.cn/legacy/insect-bite"
+    }
+  },
+  {
+    "event_id": "evt-2025-0602-script-old-online",
+    "event_type": "CHANNEL_PUBLISHED",
+    "aggregate_type": "channel_release",
+    "aggregate_id": "rel-script-old-1",
+    "occurred_at": "2025-06-02T11:00:00+08:00",
+    "version": 1,
+    "summary": "坐席话术库旧条目入库，引用 kb-2026-01",
+    "payload": {
+      "channel": "script_library",
+      "channel_name": "坐席话术库旧条目",
+      "revision_id": "rel-script-old-1",
+      "kb_version": "kb-2026-01",
+      "content_refs": ["old-home-01", "old-home-02", "old-home-03", "old-rule-observe-all"],
+      "locator": "scriptlib://triage/insect-bite-dermatitis/v1"
+    }
+  },
+  {
+    "event_id": "evt-2025-0815-partner-old-repost",
+    "event_type": "CHANNEL_PUBLISHED",
+    "aggregate_type": "channel_release",
+    "aggregate_id": "rel-partner-old-1",
+    "occurred_at": "2025-08-15T14:00:00+08:00",
+    "version": 1,
+    "summary": "合作社区公众号转载旧科普稿（含酒精/碘伏与挑破水疱说法）",
+    "payload": {
+      "channel": "partner",
+      "channel_name": "某社区卫生服务中心公众号",
+      "revision_id": "rel-partner-old-1",
+      "kb_version": "kb-2026-01",
+      "content_refs": ["old-home-01", "old-home-02", "old-home-03", "old-rule-observe-all"],
+      "locator": "partner://community-mp/legacy-post-2025-08"
+    }
+  },
+  {
+    "event_id": "evt-2026-0915-signal-facility-a",
+    "event_type": "RISK_SIGNAL_REPORTED",
+    "aggregate_type": "risk_signal",
+    "aggregate_id": "sig-2026-0915-facility-a",
+    "occurred_at": "2026-09-15T17:20:00+08:00",
+    "version": 1,
+    "summary": "市第一人民医院皮肤科上报：近两周疑似隐翅虫皮炎就诊增多",
+    "payload": {
+      "signal_id": "sig-2026-0915-facility-a",
+      "reported_by_facility": {"facility_id": "facility-A", "name": "市第一人民医院", "department": "皮肤科"},
+      "reporter": "周医生（皮肤科值班）",
+      "onset_window": {"start": "2026-09-01", "end": "2026-09-15"},
+      "area": "城东、沿江片区",
+      "case_count": 17,
+      "suspected_exposure": "exp-paederus",
+      "raw_note": "夜间灯下拍虫后面颈条片状红斑、密集水疱为主，近两周17例，去年同期约3例。",
+      "status": "pending_review",
+      "source_doc_ref": "facility-A/皮肤科/2026-09/上报单017"
+    }
+  },
+  {
+    "event_id": "evt-2026-0918-signal-facility-b",
+    "event_type": "RISK_SIGNAL_REPORTED",
+    "aggregate_type": "risk_signal",
+    "aggregate_id": "sig-2026-0918-facility-b",
+    "occurred_at": "2026-09-18T09:10:00+08:00",
+    "version": 1,
+    "summary": "江南区社区医疗联合体上报：面颈部水疱样皮炎咨询与就诊增多",
+    "payload": {
+      "signal_id": "sig-2026-0918-facility-b",
+      "reported_by_facility": {"facility_id": "facility-B", "name": "江南区社区医疗联合体", "department": "全科/家庭医生"},
+      "reporter": "李站长",
+      "onset_window": {"start": "2026-09-05", "end": "2026-09-18"},
+      "area": "江南区多个街道",
+      "case_count": 11,
+      "suspected_exposure": "exp-paederus",
+      "raw_note": "11例面颈或上肢条片状红斑起水疱，多数回忆夜间拍打过小虫；仅为机构初步判断。",
+      "status": "pending_review",
+      "source_doc_ref": "facility-B/联合体/2026-09/周报附页"
+    }
+  },
+  {
+    "event_id": "evt-2026-0919-signal-facility-c",
+    "event_type": "RISK_SIGNAL_REPORTED",
+    "aggregate_type": "risk_signal",
+    "aggregate_id": "sig-2026-0919-facility-c",
+    "occurred_at": "2026-09-19T16:40:00+08:00",
+    "version": 1,
+    "summary": "市儿童医院上报：儿童面部及上肢水疱样皮炎就诊增多",
+    "payload": {
+      "signal_id": "sig-2026-0919-facility-c",
+      "reported_by_facility": {"facility_id": "facility-C", "name": "市儿童医院", "department": "皮肤科门诊"},
+      "reporter": "陈医生",
+      "onset_window": {"start": "2026-09-07", "end": "2026-09-19"},
+      "area": "全市，城北居多",
+      "case_count": 9,
+      "suspected_exposure": "exp-paederus",
+      "raw_note": "9例6-12岁儿童，晚自修/夜灯后发疹；其中2例已糜烂渗出。机构数据，未经疾控核实。",
+      "status": "pending_review",
+      "source_doc_ref": "facility-C/门诊/2026-09/疾病监测日报"
+    }
+  },
+  {
+    "event_id": "evt-2026-0921-kb02-publish",
+    "event_type": "KNOWLEDGE_PUBLISHED",
+    "aggregate_type": "knowledge_revision",
+    "aggregate_id": "dermatitis_triage_knowledge",
+    "occurred_at": "2026-09-21T08:30:00+08:00",
+    "version": 2,
+    "summary": "发布现行版 kb-2026-02：分级分流取代一律居家观察，删除酒精/碘伏/挑破水疱等错误处理",
+    "payload": {
+      "kb_version": "kb-2026-02",
+      "catalog": "虫媒皮炎分流知识库",
+      "supersedes": "kb-2026-01",
+      "status": "active",
+      "module_versions": {
+        "sources": "src-v2",
+        "populations": "pop-v2",
+        "exposure_routes": "exp-v2",
+        "symptom_patterns": "sym-v2",
+        "severity_levels": "sev-v2",
+        "contraindications": "ctra-v2",
+        "home_steps": "home-v2",
+        "care_rules": "rule-v2",
+        "intake_questions": "mq-v2",
+        "seasonal_risks": "sea-v2",
+        "channels": "chn-v2"
+      },
+      "change_summary": "按人群/部位/形态/全身信号分级；儿童、面部密集水疱、大面积水疱、糜烂渗出优先升级；禁忌二次刺激处理。"
+    }
+  },
+  {
+    "event_id": "evt-2026-0921-withdraw-old-items",
+    "event_type": "CONTENT_WITHDRAWN",
+    "aggregate_type": "knowledge_revision",
+    "aggregate_id": "dermatitis_triage_knowledge",
+    "occurred_at": "2026-09-21T08:35:00+08:00",
+    "version": 1,
+    "summary": "撤回 kb-2026-01 中酒精/碘伏涂擦、挑破水疱及一律居家观察等错误条目",
+    "payload": {
+      "items": [
+        {"item_id": "old-home-01", "origin_kb": "kb-2026-01", "reason": "酒精涂擦刺激破损皮肤，加重疼痛与渗出，属二次刺激错误处理。", "superseded_by": "home-wash"},
+        {"item_id": "old-home-02", "origin_kb": "kb-2026-01", "reason": "碘伏/红药水/紫药水刺激皮损、着色并掩盖皮疹影响面诊。", "superseded_by": "home-cold-compress"},
+        {"item_id": "old-home-03", "origin_kb": "kb-2026-01", "reason": "自行挑破水疱破坏皮肤屏障，显著增加感染风险。", "superseded_by": "home-cover-clean"},
+        {"item_id": "old-home-04", "origin_kb": "kb-2026-01", "reason": "不区分人群与严重程度一律居家观察，延误面部密集水疱、糜烂渗出等需当日就诊者。", "superseded_by": "r-face-dense-vesicles"},
+        {"item_id": "old-rule-observe-all", "origin_kb": "kb-2026-01", "reason": "无分级规则，所有皮损均导向居家观察，与分级分流原则冲突。", "superseded_by": "rule-v2"}
+      ]
+    }
+  },
+  {
+    "event_id": "evt-2026-0921-web-new-online",
+    "event_type": "CHANNEL_PUBLISHED",
+    "aggregate_type": "channel_release",
+    "aggregate_id": "rel-web-new-1",
+    "occurred_at": "2026-09-21T12:00:00+08:00",
+    "version": 1,
+    "summary": "门户专栏页按 kb-2026-02 上线分级分流与规范居家护理内容",
+    "payload": {
+      "channel": "web",
+      "channel_name": "市健康热线公众门户·虫咬皮炎专栏页",
+      "revision_id": "rel-web-new-1",
+      "kb_version": "kb-2026-02",
+      "content_refs": ["r-mild-local", "r-face-dense-vesicles", "home-wash", "home-cold-compress", "ctr-alcohol", "ctr-pop-blister"],
+      "locator": "https://health.example.gov.cn/topics/insect-bite-dermatitis"
+    }
+  },
+  {
+    "event_id": "evt-2026-0921-script-new-online",
+    "event_type": "CHANNEL_PUBLISHED",
+    "aggregate_type": "channel_release",
+    "aggregate_id": "rel-script-new-1",
+    "occurred_at": "2026-09-21T13:00:00+08:00",
+    "version": 1,
+    "summary": "坐席话术库按 kb-2026-02 入库分级分流卡片",
+    "payload": {
+      "channel": "script_library",
+      "channel_name": "坐席话术库（分流卡片）",
+      "revision_id": "rel-script-new-1",
+      "kb_version": "kb-2026-02",
+      "content_refs": ["r-anaphylaxis", "r-face-dense-vesicles", "r-child-vesicle", "r-mild-local", "r-erosion-oozing"],
+      "locator": "scriptlib://triage/insect-bite-dermatitis/v2"
+    }
+  },
+  {
+    "event_id": "evt-2026-0922-cluster-confirmed",
+    "event_type": "CLUSTER_REVIEWED",
+    "aggregate_type": "cluster_alert",
+    "aggregate_id": "alert-2026-09-paederus-01",
+    "occurred_at": "2026-09-22T10:00:00+08:00",
+    "version": 1,
+    "summary": "疾控复核三家医疗机构信号后确认：9月沿江/城区隐翅虫皮炎聚集性升高，发布聚集预警",
+    "payload": {
+      "decision": "confirm_alert",
+      "signal_ids": ["sig-2026-0915-facility-a", "sig-2026-0918-facility-b", "sig-2026-0919-facility-c"],
+      "alert_id": "alert-2026-09-paederus-01",
+      "reviewed_by": "市疾控中心病媒防制科（高科长）会同皮肤科专家组",
+      "rationale": "三家独立机构在同一时间窗、重叠地理范围报告同类型皮损共37例，较基线明显升高，暴露史与季节（8-10月隐翅虫高峰）吻合；各机构原始上报仍按来源保留，预警结论由疾控统一作出。",
+      "advisory_kb_version": "kb-2026-02"
+    }
+  },
+  {
+    "event_id": "evt-2026-0922-partner-advisory-online",
+    "event_type": "CHANNEL_PUBLISHED",
+    "aggregate_type": "channel_release",
+    "aggregate_id": "rel-partner-new-1",
+    "occurred_at": "2026-09-22T15:00:00+08:00",
+    "version": 1,
+    "summary": "聚集预警经合作渠道矩阵发布（疾控确认后才可对外）",
+    "payload": {
+      "channel": "partner",
+      "channel_name": "区疾控与社区卫生服务中心公众号矩阵",
+      "revision_id": "rel-partner-new-1",
+      "kb_version": "kb-2026-02",
+      "content_refs": ["alert-2026-09-paederus-01", "exp-paederus", "r-face-dense-vesicles", "home-paederus-rinse"],
+      "locator": "partner://community-mp/alert-2026-09-paederus-01"
+    }
+  },
+  {
+    "event_id": "evt-2026-0922-web-old-takedown",
+    "event_type": "CHANNEL_TAKEDOWN_CONFIRMED",
+    "aggregate_type": "channel_release",
+    "aggregate_id": "rel-web-old-1",
+    "occurred_at": "2026-09-22T16:00:00+08:00",
+    "version": 1,
+    "summary": "确认门户旧科普页已下线并301跳转至新版专栏页",
+    "payload": {
+      "revision_id": "rel-web-old-1",
+      "withdrawn_event_id": "evt-2026-0921-withdraw-old-items",
+      "confirmed_by": "热线内容组（王编辑）",
+      "replacement_revision_id": "rel-web-new-1",
+      "note": "旧URL已301跳转，含酒精/碘伏说法页面不可再访问。"
+    }
+  },
+  {
+    "event_id": "evt-2026-0922-script-old-takedown",
+    "event_type": "CHANNEL_TAKEDOWN_CONFIRMED",
+    "aggregate_type": "channel_release",
+    "aggregate_id": "rel-script-old-1",
+    "occurred_at": "2026-09-22T16:30:00+08:00",
+    "version": 1,
+    "summary": "确认坐席话术库旧条目已停用并替换为 v2 分流卡片",
+    "payload": {
+      "revision_id": "rel-script-old-1",
+      "withdrawn_event_id": "evt-2026-0921-withdraw-old-items",
+      "confirmed_by": "热线培训组（张主管）",
+      "replacement_revision_id": "rel-script-new-1",
+      "note": "坐席界面已只展示 kb-2026-02 卡片，旧条目标记停用。"
+    }
+  },
+  {
+    "event_id": "evt-2026-0930-partner-old-takedown",
+    "event_type": "CHANNEL_TAKEDOWN_CONFIRMED",
+    "aggregate_type": "channel_release",
+    "aggregate_id": "rel-partner-old-1",
+    "occurred_at": "2026-09-30T11:00:00+08:00",
+    "version": 1,
+    "summary": "确认合作社区公众号旧转载稿已删除并置顶更正说明（影响扫描发现后下线）",
+    "payload": {
+      "revision_id": "rel-partner-old-1",
+      "withdrawn_event_id": "evt-2026-0921-withdraw-old-items",
+      "confirmed_by": "合作渠道运营（林运营）会同该公众号管理员",
+      "replacement_revision_id": "rel-partner-new-1",
+      "note": "2026-09-29撤回影响扫描发现该合作渠道仍在用旧稿；发函后于09-30删除并发布更正，指向聚集预警与新版指引。"
+    }
+  }
+]
